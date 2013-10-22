@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="unqualified">
+	<xs:complexType name="Metrics">
+		<xs:annotation>
+			<xs:documentation>
+				A sequence of metric measurements of various
+				things. The metric measurements are intended to be related somehow
+				(i.e., are in relation to a common digital object) but need not be
+				measured on exactly the same entity.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="metric" type="Metric" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Metric">
+		<xs:annotation>
+			<xs:documentation>
+				A single base measurement of some sort of metric,
+				consisting of a triple: the measured value (the value of the this
+				element), the subject which the measurement was done against, and
+				the type of measurement that was performed.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="subject" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>
+							The entity against which the measurement was
+							performed.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>
+							The type of measurement that was done. The type
+							SHOULD be named by reference to a term expressed in an ontology.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="metrics" type="Metrics">
+		<xs:annotation>
+			<xs:documentation>
+				The root of a metric description document. Note
+				that two metric description documents can be combined by
+				concatenating the elements that are contained inside these outer
+				containers; though they are in a sequence, the order is NOT
+				significant.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>
