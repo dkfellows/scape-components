@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="unqualified">
-	<xs:complexType name="Metrics">
+	<xs:complexType name="Measures">
 		<xs:annotation>
 			<xs:documentation>
 				A sequence of metric measurements of various
@@ -11,10 +11,10 @@
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="metric" type="Metric" maxOccurs="unbounded" />
+			<xs:element ref="measure" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="Metric">
+	<xs:complexType name="Measure">
 		<xs:annotation>
 			<xs:documentation>
 				A single base measurement of some sort of metric,
@@ -44,10 +44,17 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:element name="metrics" type="Metrics">
+	<xs:element name="measure" type="Measure">
 		<xs:annotation>
 			<xs:documentation>
-				The root of a metric description document. Note
+				The root of a simple measure description that measures a single facet of a single subject. These can then be assembled into an overall measure document that measures many facets of many things.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="measures" type="Measures">
+		<xs:annotation>
+			<xs:documentation>
+				The root of a measure description document. Note
 				that two metric description documents can be combined by
 				concatenating the elements that are contained inside these outer
 				containers; though they are in a sequence, the order is NOT
