@@ -1,4 +1,4 @@
-<workflow xmlns="http://taverna.sf.net/2008/xml/t2flow" version="1" producedBy="taverna-2.4.0"><dataflow id="4fd50ca4-c7cb-47ef-b50a-84a6f3fe1bb9" role="top"><name>executionPlan</name><inputPorts><port><name>objects</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port><port><name>schematron</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port></inputPorts><outputPorts><port><name>combinedMetricDocument</name><annotations /></port><port><name>report</name><annotations /></port><port><name>inputFiles</name><annotations /></port><port><name>outputFiles</name><annotations /></port><port><name>input_dimensions</name><annotations /></port><port><name>output_dimensions</name><annotations /></port></outputPorts><processors><processor><name>preservationActionPlan</name><inputPorts><port><name>input_filename</name><depth>0</depth></port></inputPorts><outputPorts><port><name>input_dimensions</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>output_dimensions</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>output_filename</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>input_compressionRatio</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>output_compressionRatio</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>dataflow-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.dataflow.DataflowActivity</class><inputMap><map from="input_filename" to="input_filename" /></inputMap><outputMap><map from="output_compressionRatio" to="output_compressionRatio" /><map from="input_dimensions" to="input_dimensions" /><map from="output_filename" to="output_filename" /><map from="output_dimensions" to="output_dimensions" /><map from="input_compressionRatio" to="input_compressionRatio" /></outputMap><configBean encoding="dataflow"><dataflow ref="e69c9802-2adc-44d7-9d30-54aaf700200d" /></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+<workflow xmlns="http://taverna.sf.net/2008/xml/t2flow" version="1" producedBy="taverna-2.4.0"><dataflow id="c7ce21e7-e27b-45ce-b225-fbd779e450f4" role="top"><name>executionPlan</name><inputPorts><port><name>objects</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port><port><name>schematron</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port></inputPorts><outputPorts><port><name>combinedMetricDocument</name><annotations /></port><port><name>report</name><annotations /></port><port><name>inputFiles</name><annotations /></port><port><name>outputFiles</name><annotations /></port></outputPorts><processors><processor><name>preservationActionPlan</name><inputPorts><port><name>input_filename</name><depth>0</depth></port></inputPorts><outputPorts><port><name>output_filename</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>measure_input_dimensions</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>measure_input_compressionRatio</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>measure_output_dimensions</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>measure_output_compressionRatio</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>dataflow-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.dataflow.DataflowActivity</class><inputMap><map from="input_filename" to="input_filename" /></inputMap><outputMap><map from="measure_output_compressionRatio" to="measure_output_compressionRatio" /><map from="measure_output_dimensions" to="measure_output_dimensions" /><map from="output_filename" to="output_filename" /><map from="measure_input_compressionRatio" to="measure_input_compressionRatio" /><map from="measure_input_dimensions" to="measure_input_dimensions" /></outputMap><configBean encoding="dataflow"><dataflow ref="24711c48-e57a-4599-974b-6b0a7895d976" /></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
   <maxJobs>1</maxJobs>
 </net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
   <backoffFactor>1.0</backoffFactor>
@@ -120,14 +120,14 @@ filename = new List();</script>
   <initialDelay>1000</initialDelay>
   <maxDelay>5000</maxDelay>
   <maxRetries>0</maxRetries>
-</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="objectList" depth="0" /><port name="input_filename" depth="1" /><port name="output_filename" depth="1" /><port name="assessment" depth="1" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>assessment</name><inputPorts><port><name>subject</name><depth>0</depth></port><port><name>QLD</name><depth>0</depth></port><port><name>subject_2</name><depth>0</depth></port><port><name>values</name><depth>1</depth></port><port><name>values_2</name><depth>1</depth></port><port><name>types</name><depth>0</depth></port><port><name>types_2</name><depth>0</depth></port></inputPorts><outputPorts><port><name>isSatisfied</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>combinedMetricDocument</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>dataflow-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.dataflow.DataflowActivity</class><inputMap><map from="QLD" to="QLD" /><map from="values" to="values" /><map from="values_2" to="values_2" /><map from="subject" to="subject" /><map from="types_2" to="types_2" /><map from="subject_2" to="subject_2" /><map from="types" to="types" /></inputMap><outputMap><map from="isSatisfied" to="isSatisfied" /><map from="combinedMetricDocument" to="combinedMetricDocument" /></outputMap><configBean encoding="dataflow"><dataflow ref="a8cbdd0b-a0b4-484a-8690-f6881f8981cf" /></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="objectList" depth="0" /><port name="input_filename" depth="1" /><port name="output_filename" depth="1" /><port name="assessment" depth="1" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>assessment</name><inputPorts><port><name>subject</name><depth>0</depth></port><port><name>QLD</name><depth>0</depth></port><port><name>subject_2</name><depth>0</depth></port><port><name>types</name><depth>0</depth></port><port><name>types_2</name><depth>0</depth></port><port><name>values</name><depth>1</depth></port><port><name>values_2</name><depth>1</depth></port></inputPorts><outputPorts><port><name>isSatisfied</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>combinedMetricDocument</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>dataflow-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.dataflow.DataflowActivity</class><inputMap><map from="QLD" to="QLD" /><map from="values_2" to="values_2" /><map from="values" to="values" /><map from="types_2" to="types_2" /><map from="subject" to="subject" /><map from="subject_2" to="subject_2" /><map from="types" to="types" /></inputMap><outputMap><map from="combinedMetricDocument" to="combinedMetricDocument" /><map from="isSatisfied" to="isSatisfied" /></outputMap><configBean encoding="dataflow"><dataflow ref="a8cbdd0b-a0b4-484a-8690-f6881f8981cf" /></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
   <maxJobs>1</maxJobs>
 </net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
   <backoffFactor>1.0</backoffFactor>
   <initialDelay>1000</initialDelay>
   <maxDelay>5000</maxDelay>
   <maxRetries>0</maxRetries>
-</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><dot><port name="values" depth="1" /><port name="values_2" depth="1" /></dot><dot><port name="subject" depth="0" /><port name="QLD" depth="0" /><port name="subject_2" depth="0" /><port name="types" depth="0" /><port name="types_2" depth="0" /></dot></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>constant_in_metrics</name><inputPorts /><outputPorts><port><name>value</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>stringconstant-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.stringconstant.StringConstantActivity</class><inputMap /><outputMap><map from="value" to="value" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.stringconstant.StringConstantConfigurationBean xmlns="">
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><dot /><dot><port name="subject" depth="0" /><port name="QLD" depth="0" /><port name="subject_2" depth="0" /><port name="types" depth="0" /><port name="types_2" depth="0" /></dot><port name="values" depth="1" /><port name="values_2" depth="1" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>constant_input_metrics</name><inputPorts /><outputPorts><port><name>value</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>stringconstant-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.stringconstant.StringConstantActivity</class><inputMap /><outputMap><map from="value" to="value" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.stringconstant.StringConstantConfigurationBean xmlns="">
   <value>dimensions,compressionRatio</value>
 </net.sf.taverna.t2.activities.stringconstant.StringConstantConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
   <maxJobs>1</maxJobs>
@@ -136,7 +136,7 @@ filename = new List();</script>
   <initialDelay>1000</initialDelay>
   <maxDelay>5000</maxDelay>
   <maxRetries>0</maxRetries>
-</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy /></iteration></iterationStrategyStack></processor><processor><name>constant_out_metrics</name><inputPorts /><outputPorts><port><name>value</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>stringconstant-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.stringconstant.StringConstantActivity</class><inputMap /><outputMap><map from="value" to="value" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.stringconstant.StringConstantConfigurationBean xmlns="">
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy /></iteration></iterationStrategyStack></processor><processor><name>constant_output_metrics</name><inputPorts /><outputPorts><port><name>value</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>stringconstant-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.stringconstant.StringConstantActivity</class><inputMap /><outputMap><map from="value" to="value" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.stringconstant.StringConstantConfigurationBean xmlns="">
   <value>dimensions,compressionRatio</value>
 </net.sf.taverna.t2.activities.stringconstant.StringConstantConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
   <maxJobs>1</maxJobs>
@@ -145,7 +145,29 @@ filename = new List();</script>
   <initialDelay>1000</initialDelay>
   <maxDelay>5000</maxDelay>
   <maxRetries>0</maxRetries>
-</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy /></iteration></iterationStrategyStack></processor></processors><conditions /><datalinks><datalink><sink type="processor"><processor>preservationActionPlan</processor><port>input_filename</port></sink><source type="processor"><processor>stageIn</processor><port>filename</port></source></datalink><datalink><sink type="processor"><processor>stageIn</processor><port>objectList</port></sink><source type="dataflow"><port>objects</port></source></datalink><datalink><sink type="processor"><processor>stageOut</processor><port>objectList</port></sink><source type="dataflow"><port>objects</port></source></datalink><datalink><sink type="processor"><processor>stageOut</processor><port>input_filename</port></sink><source type="processor"><processor>stageIn</processor><port>filename</port></source></datalink><datalink><sink type="processor"><processor>stageOut</processor><port>output_filename</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>output_filename</port></source></datalink><datalink><sink type="processor"><processor>stageOut</processor><port>assessment</port></sink><source type="processor"><processor>assessment</processor><port>isSatisfied</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>subject</port></sink><source type="processor"><processor>constant_input</processor><port>value</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>QLD</port></sink><source type="dataflow"><port>schematron</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>subject_2</port></sink><source type="processor"><processor>constant_output</processor><port>value</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>types</port></sink><source type="processor"><processor>constant_in_metrics</processor><port>value</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>types_2</port></sink><source type="processor"><processor>constant_out_metrics</processor><port>value</port></source></datalink><datalink><sink type="merge"><processor>assessment</processor><port>values</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>input_dimensions</port></source></datalink><datalink><sink type="merge"><processor>assessment</processor><port>values</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>input_compressionRatio</port></source></datalink><datalink><sink type="merge"><processor>assessment</processor><port>values_2</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>output_dimensions</port></source></datalink><datalink><sink type="merge"><processor>assessment</processor><port>values_2</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>output_compressionRatio</port></source></datalink><datalink><sink type="dataflow"><port>combinedMetricDocument</port></sink><source type="processor"><processor>assessment</processor><port>combinedMetricDocument</port></source></datalink><datalink><sink type="dataflow"><port>report</port></sink><source type="processor"><processor>stageOut</processor><port>report</port></source></datalink><datalink><sink type="dataflow"><port>inputFiles</port></sink><source type="processor"><processor>stageIn</processor><port>filename</port></source></datalink><datalink><sink type="dataflow"><port>outputFiles</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>output_filename</port></source></datalink><datalink><sink type="dataflow"><port>input_dimensions</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>input_dimensions</port></source></datalink><datalink><sink type="dataflow"><port>output_dimensions</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>output_dimensions</port></source></datalink></datalinks><annotations><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy /></iteration></iterationStrategyStack></processor></processors><conditions /><datalinks><datalink><sink type="processor"><processor>preservationActionPlan</processor><port>input_filename</port></sink><source type="processor"><processor>stageIn</processor><port>filename</port></source></datalink><datalink><sink type="processor"><processor>stageIn</processor><port>objectList</port></sink><source type="dataflow"><port>objects</port></source></datalink><datalink><sink type="processor"><processor>stageOut</processor><port>objectList</port></sink><source type="dataflow"><port>objects</port></source></datalink><datalink><sink type="processor"><processor>stageOut</processor><port>input_filename</port></sink><source type="processor"><processor>stageIn</processor><port>filename</port></source></datalink><datalink><sink type="processor"><processor>stageOut</processor><port>output_filename</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>output_filename</port></source></datalink><datalink><sink type="processor"><processor>stageOut</processor><port>assessment</port></sink><source type="processor"><processor>assessment</processor><port>isSatisfied</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>subject</port></sink><source type="processor"><processor>constant_input</processor><port>value</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>QLD</port></sink><source type="dataflow"><port>schematron</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>subject_2</port></sink><source type="processor"><processor>constant_output</processor><port>value</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>types</port></sink><source type="processor"><processor>constant_input_metrics</processor><port>value</port></source></datalink><datalink><sink type="processor"><processor>assessment</processor><port>types_2</port></sink><source type="processor"><processor>constant_output_metrics</processor><port>value</port></source></datalink><datalink><sink type="merge"><processor>assessment</processor><port>values</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>measure_input_dimensions</port></source></datalink><datalink><sink type="merge"><processor>assessment</processor><port>values</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>measure_input_compressionRatio</port></source></datalink><datalink><sink type="merge"><processor>assessment</processor><port>values_2</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>measure_output_dimensions</port></source></datalink><datalink><sink type="merge"><processor>assessment</processor><port>values_2</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>measure_output_compressionRatio</port></source></datalink><datalink><sink type="dataflow"><port>combinedMetricDocument</port></sink><source type="processor"><processor>assessment</processor><port>combinedMetricDocument</port></source></datalink><datalink><sink type="dataflow"><port>report</port></sink><source type="processor"><processor>stageOut</processor><port>report</port></source></datalink><datalink><sink type="dataflow"><port>inputFiles</port></sink><source type="processor"><processor>stageIn</processor><port>filename</port></source></datalink><datalink><sink type="dataflow"><port>outputFiles</port></sink><source type="processor"><processor>preservationActionPlan</processor><port>output_filename</port></source></datalink></datalinks><annotations><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>c9af1f03-cca4-4afe-9c19-66a5a983c4b2</identification>
+      </annotationBean>
+      <date>2013-11-08 11:39:06.921 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>c7ce21e7-e27b-45ce-b225-fbd779e450f4</identification>
+      </annotationBean>
+      <date>2013-11-10 18:15:40.868 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
@@ -167,28 +189,6 @@ filename = new List();</script>
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
   </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
-  <annotationAssertions>
-    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.DescriptiveTitle">
-        <text>executionPlan</text>
-      </annotationBean>
-      <date>2013-11-08 11:57:01.361 UTC</date>
-      <creators />
-      <curationEventList />
-    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-  </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
-  <annotationAssertions>
-    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
-        <identification>c9af1f03-cca4-4afe-9c19-66a5a983c4b2</identification>
-      </annotationBean>
-      <date>2013-11-08 11:39:06.921 UTC</date>
-      <creators />
-      <curationEventList />
-    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-  </annotationAssertions>
 </net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
@@ -200,7 +200,18 @@ filename = new List();</script>
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
   </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2></annotations></dataflow><dataflow id="e69c9802-2adc-44d7-9d30-54aaf700200d" role="nested"><name>preservationActionPl</name><inputPorts><port><name>input_filename</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port></inputPorts><outputPorts><port><name>output_filename</name><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.DescriptiveTitle">
+        <text>executionPlan</text>
+      </annotationBean>
+      <date>2013-11-08 11:57:01.361 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></dataflow><dataflow id="24711c48-e57a-4599-974b-6b0a7895d976" role="nested"><name>preservationActionPl</name><inputPorts><port><name>input_filename</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port></inputPorts><outputPorts><port><name>output_filename</name><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.FreeTextDescription">
@@ -212,7 +223,7 @@ measure: dimensions</text>
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
   </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>input_dimensions</name><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>measure_input_dimensions</name><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.FreeTextDescription">
@@ -224,7 +235,7 @@ measure: dimensions</text>
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
   </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>output_dimensions</name><annotations /></port><port><name>output_compressionRatio</name><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>measure_output_dimensions</name><annotations /></port><port><name>measure_output_compressionRatio</name><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.FreeTextDescription">
@@ -236,7 +247,7 @@ measure: compressionRatio</text>
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
   </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>input_compressionRatio</name><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></port><port><name>measure_input_compressionRatio</name><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.FreeTextDescription">
@@ -383,7 +394,7 @@ measure: compressionRatio</text>
   <initialDelay>1000</initialDelay>
   <maxDelay>5000</maxDelay>
   <maxRetries>0</maxRetries>
-</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="filename" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor></processors><conditions><condition control="Convert_TIFF_to_JPEG-2000" target="Extract_JPEG-2000_dimensions" /><condition control="Convert_TIFF_to_JPEG-2000" target="dummy_measure_compressionRatio_2" /></conditions><datalinks><datalink><sink type="processor"><processor>Convert_TIFF_to_JPEG-2000</processor><port>output_filename</port></sink><source type="processor"><processor>GenerateOutputFilename</processor><port>out1</port></source></datalink><datalink><sink type="processor"><processor>Convert_TIFF_to_JPEG-2000</processor><port>input_filename</port></sink><source type="dataflow"><port>input_filename</port></source></datalink><datalink><sink type="processor"><processor>GenerateOutputFilename</processor><port>in1</port></sink><source type="dataflow"><port>input_filename</port></source></datalink><datalink><sink type="processor"><processor>Extract_TIFF_dimensions</processor><port>input_filename</port></sink><source type="dataflow"><port>input_filename</port></source></datalink><datalink><sink type="processor"><processor>Extract_JPEG-2000_dimensions</processor><port>jp2file</port></sink><source type="processor"><processor>GenerateOutputFilename</processor><port>out1</port></source></datalink><datalink><sink type="processor"><processor>dummy_measure_compressionRatio</processor><port>filename</port></sink><source type="dataflow"><port>input_filename</port></source></datalink><datalink><sink type="processor"><processor>dummy_measure_compressionRatio_2</processor><port>filename</port></sink><source type="processor"><processor>GenerateOutputFilename</processor><port>out1</port></source></datalink><datalink><sink type="dataflow"><port>output_filename</port></sink><source type="processor"><processor>GenerateOutputFilename</processor><port>out1</port></source></datalink><datalink><sink type="dataflow"><port>input_dimensions</port></sink><source type="processor"><processor>Extract_TIFF_dimensions</processor><port>dimensions</port></source></datalink><datalink><sink type="dataflow"><port>output_dimensions</port></sink><source type="processor"><processor>Extract_JPEG-2000_dimensions</processor><port>dimensions</port></source></datalink><datalink><sink type="dataflow"><port>output_compressionRatio</port></sink><source type="processor"><processor>dummy_measure_compressionRatio_2</processor><port>compressionRatio</port></source></datalink><datalink><sink type="dataflow"><port>input_compressionRatio</port></sink><source type="processor"><processor>dummy_measure_compressionRatio</processor><port>compressionRatio</port></source></datalink></datalinks><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="filename" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor></processors><conditions><condition control="Convert_TIFF_to_JPEG-2000" target="dummy_measure_compressionRatio_2" /><condition control="Convert_TIFF_to_JPEG-2000" target="Extract_JPEG-2000_dimensions" /></conditions><datalinks><datalink><sink type="processor"><processor>Convert_TIFF_to_JPEG-2000</processor><port>output_filename</port></sink><source type="processor"><processor>GenerateOutputFilename</processor><port>out1</port></source></datalink><datalink><sink type="processor"><processor>Convert_TIFF_to_JPEG-2000</processor><port>input_filename</port></sink><source type="dataflow"><port>input_filename</port></source></datalink><datalink><sink type="processor"><processor>GenerateOutputFilename</processor><port>in1</port></sink><source type="dataflow"><port>input_filename</port></source></datalink><datalink><sink type="processor"><processor>Extract_TIFF_dimensions</processor><port>input_filename</port></sink><source type="dataflow"><port>input_filename</port></source></datalink><datalink><sink type="processor"><processor>Extract_JPEG-2000_dimensions</processor><port>jp2file</port></sink><source type="processor"><processor>GenerateOutputFilename</processor><port>out1</port></source></datalink><datalink><sink type="processor"><processor>dummy_measure_compressionRatio</processor><port>filename</port></sink><source type="dataflow"><port>input_filename</port></source></datalink><datalink><sink type="processor"><processor>dummy_measure_compressionRatio_2</processor><port>filename</port></sink><source type="processor"><processor>GenerateOutputFilename</processor><port>out1</port></source></datalink><datalink><sink type="dataflow"><port>output_filename</port></sink><source type="processor"><processor>GenerateOutputFilename</processor><port>out1</port></source></datalink><datalink><sink type="dataflow"><port>measure_input_dimensions</port></sink><source type="processor"><processor>Extract_TIFF_dimensions</processor><port>dimensions</port></source></datalink><datalink><sink type="dataflow"><port>measure_output_dimensions</port></sink><source type="processor"><processor>Extract_JPEG-2000_dimensions</processor><port>dimensions</port></source></datalink><datalink><sink type="dataflow"><port>measure_output_compressionRatio</port></sink><source type="processor"><processor>dummy_measure_compressionRatio_2</processor><port>compressionRatio</port></source></datalink><datalink><sink type="dataflow"><port>measure_input_compressionRatio</port></sink><source type="processor"><processor>dummy_measure_compressionRatio</processor><port>compressionRatio</port></source></datalink></datalinks><annotations><annotation_chain encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.DescriptiveTitle">
@@ -398,20 +409,9 @@ measure: compressionRatio</text>
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
-        <identification>812f0d4d-463f-4508-b8f9-db61c0aed9da</identification>
+        <identification>3b87f1bd-d562-4529-82a5-0e054079b9f6</identification>
       </annotationBean>
-      <date>2013-11-08 13:21:49.124 UTC</date>
-      <creators />
-      <curationEventList />
-    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-  </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
-  <annotationAssertions>
-    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
-        <identification>055bab44-4923-40a9-9918-db7e6984c76b</identification>
-      </annotationBean>
-      <date>2013-11-08 11:56:10.889 UTC</date>
+      <date>2013-11-08 09:36:10.47 UTC</date>
       <creators />
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
@@ -431,9 +431,31 @@ measure: compressionRatio</text>
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
-        <identification>3b87f1bd-d562-4529-82a5-0e054079b9f6</identification>
+        <identification>055bab44-4923-40a9-9918-db7e6984c76b</identification>
       </annotationBean>
-      <date>2013-11-08 09:36:10.47 UTC</date>
+      <date>2013-11-08 11:56:10.889 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>24711c48-e57a-4599-974b-6b0a7895d976</identification>
+      </annotationBean>
+      <date>2013-11-10 18:13:36.772 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>812f0d4d-463f-4508-b8f9-db61c0aed9da</identification>
+      </annotationBean>
+      <date>2013-11-08 13:21:49.124 UTC</date>
       <creators />
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
@@ -567,42 +589,9 @@ measure: compressionRatio</text>
   <annotationAssertions>
     <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
       <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
-        <identification>329e99e1-d4ba-445b-9a76-184148c04e03</identification>
-      </annotationBean>
-      <date>2013-11-08 11:56:35.656 UTC</date>
-      <creators />
-      <curationEventList />
-    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-  </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
-  <annotationAssertions>
-    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
-        <identification>3566787f-1fab-4bec-9ebe-10c91fe9637c</identification>
-      </annotationBean>
-      <date>2013-11-08 11:28:15.463 UTC</date>
-      <creators />
-      <curationEventList />
-    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-  </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
-  <annotationAssertions>
-    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
         <identification>a8cbdd0b-a0b4-484a-8690-f6881f8981cf</identification>
       </annotationBean>
       <date>2013-11-08 13:29:26.560 UTC</date>
-      <creators />
-      <curationEventList />
-    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-  </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
-  <annotationAssertions>
-    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
-      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
-        <identification>5f1da2cc-b05f-4deb-b65f-dcea3164b31a</identification>
-      </annotationBean>
-      <date>2013-11-08 11:29:48.33 UTC</date>
       <creators />
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
@@ -618,4 +607,37 @@ measure: compressionRatio</text>
       <curationEventList />
     </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
   </annotationAssertions>
-</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain></annotations></dataflow></workflow>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>329e99e1-d4ba-445b-9a76-184148c04e03</identification>
+      </annotationBean>
+      <date>2013-11-08 11:56:35.656 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>5f1da2cc-b05f-4deb-b65f-dcea3164b31a</identification>
+      </annotationBean>
+      <date>2013-11-08 11:29:48.33 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>3566787f-1fab-4bec-9ebe-10c91fe9637c</identification>
+      </annotationBean>
+      <date>2013-11-08 11:28:15.463 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2></annotations></dataflow></workflow>
