@@ -1,0 +1,121 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://ifs.tuwien.ac.at/dp/plato" xmlns:tns="http://ifs.tuwien.ac.at/dp/plato" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="preservationActionPlan" type="tns:PreservationActionPlan"/>
+
+  <xs:complexType name="PreservationActionPlan">
+    <xs:sequence>
+      <xs:element name="collection" type="tns:Collection"/>
+      <xs:element name="objects" type="tns:Objects"/>
+      <xs:element name="executablePlan" type="tns:ExecutablePlan"/>
+      <xs:element name="qualityLevelDescription" type="tns:QualityLevelDescription" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="Collection">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string" use="required"/>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="Objects">
+    <xs:sequence>
+      <xs:element name="object" type="tns:Object" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Object">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ExecutablePlan">
+    <xs:sequence>
+      <xs:any processContents="skip" namespace="##other"/>
+    </xs:sequence>
+    <xs:attribute name="type" type="tns:ExecutablePlanType"/>
+    <xs:attribute name="id" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="QualityLevelDescription">
+    <xs:sequence>
+      <xs:any processContents="skip" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="ExecutablePlanType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="t2flow"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
+<?xml version="1.0" standalone="yes"?>
+<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" version="1.0" targetNamespace="http://ns.taverna.org.uk/2010/xml/server/" xmlns:ts-rest="http://ns.taverna.org.uk/2010/xml/server/rest/" xmlns:ts-soap="http://ns.taverna.org.uk/2010/xml/server/soap/" xmlns:ts="http://ns.taverna.org.uk/2010/xml/server/" xmlns:admin="http://ns.taverna.org.uk/2010/xml/server/admin/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:feed="http://ns.taverna.org.uk/2010/xml/server/feed/">
+
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="null"/>
+
+  <xs:complexType name="Location">
+    <xs:sequence/>
+    <xs:attribute ref="xlink:href"/>
+  </xs:complexType>
+
+  <xs:simpleType name="Status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Initialized"/>
+      <xs:enumeration value="Operating"/>
+      <xs:enumeration value="Stopped"/>
+      <xs:enumeration value="Finished"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
+<?xml version="1.0" standalone="yes"?>
+<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" version="1.0" targetNamespace="http://www.scape-project.eu/api/execution" xmlns:port="http://ns.taverna.org.uk/2010/port/" xmlns:ts-rest="http://ns.taverna.org.uk/2010/xml/server/rest/" xmlns:ts-soap="http://ns.taverna.org.uk/2010/xml/server/soap/" xmlns:scape="http://www.scape-project.eu/api/execution" xmlns:ts="http://ns.taverna.org.uk/2010/xml/server/" xmlns:tns="http://www.scape-project.eu/api/execution" xmlns:admin="http://ns.taverna.org.uk/2010/xml/server/admin/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:feed="http://ns.taverna.org.uk/2010/xml/server/feed/" xmlns:plato="http://ifs.tuwien.ac.at/dp/plato">
+
+  <xs:import namespace="http://ns.taverna.org.uk/2010/xml/server/" schemaLocation="null"/>
+
+  <xs:import namespace="http://ifs.tuwien.ac.at/dp/plato" schemaLocation="null"/>
+
+  <xs:element name="job" type="tns:job"/>
+
+  <xs:element name="job-request" type="tns:jobRequest"/>
+
+  <xs:element name="jobs" type="tns:jobs"/>
+
+  <xs:complexType name="job">
+    <xs:sequence>
+      <xs:element name="status" type="ts:Status"/>
+      <xs:element name="server-job" type="ts:Location" minOccurs="0"/>
+      <xs:element name="output" type="ts:Location" minOccurs="0"/>
+      <xs:element name="provenance" type="ts:Location" minOccurs="0"/>
+      <xs:element name="enacted-workflow" type="ts:Location" minOccurs="0"/>
+      <xs:element name="notification-address" type="ts:Location" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute ref="tns:plan-id"/>
+  </xs:complexType>
+
+  <xs:complexType name="jobs">
+    <xs:sequence>
+      <xs:element name="job" type="ts:Location" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="jobRequest">
+    <xs:sequence>
+      <xs:element ref="plato:preservationActionPlan"/>
+      <xs:element name="plan-id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:attribute name="plan-id" type="xs:string"/>
+</xs:schema>
+
+<?xml version="1.0" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:attribute name="href" type="xs:anyURI"/>
+</xs:schema>
+
+
